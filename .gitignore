@@ -8,3 +8,4 @@ dist/
 .wrangler/
 .sites-runtime/
 *.tar.gz
+.demo-capture/

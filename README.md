@@ -2,6 +2,8 @@
 
 **[Play the public demo](https://marina-bay-racer.ram-d-pradhan.chatgpt.site)** · [GitHub](https://github.com/Ram349/AstraHack)
 
+**[Watch the 90-second MP4 demo](https://github.com/Ram349/AstraHack/blob/main/demo/aunty-f1-by-the-bay-90s.mp4)** — captioned local gameplay and the Astra build story (silent).
+
 A Singapore racing prototype with a 3D Marina Bay environment, Rapier vehicle
 physics, rear chase camera, aerial introduction, race countdown, live lap timer,
 boost and Aunty Mei's driving reactions and Singapore stories.
