@@ -1,4 +1,32 @@
-# Marina Bay Racer
+# Aunty F1 By The Bay
+
+**[Play the public demo](https://marina-bay-racer.ram-d-pradhan.chatgpt.site)** · [GitHub](https://github.com/Ram349/AstraHack)
+
+A Singapore racing prototype with a 3D Marina Bay environment, Rapier vehicle
+physics, rear chase camera, aerial introduction, race countdown, live lap timer,
+boost and Aunty Mei's driving reactions and Singapore stories.
+
+Best on a desktop with a keyboard. Solo driving is public. Sign in with ChatGPT
+to join online race rooms or use live voice, then allow microphone access.
+WASD/arrow keys drive; Shift boosts; Space brakes; R restarts at the grid.
+
+The live voice implementation uses **gpt-realtime-1.5**, voice **marin**, over
+WebRTC. Astra was used through Codex for engineering iteration, browser
+verification and deployment—not as the runtime voice model. Aunty receives
+driving telemetry and curated landmark facts, not camera frames.
+
+The real OpenAI key is excluded from Git and stored privately in Sites.
+`npm start` runs the local game; `npm test` and `npm run test:hosting` run seven
+checks. See [HOSTING.md](HOSTING.md) and [RACING_UPDATE.md](RACING_UPDATE.md)
+for current architecture, controls and prototype limitations. Multiplayer is
+casual snapshot-based play, and the physical floor/collision model is simplified.
+
+This is an independent hackathon prototype, not an official Formula 1 product.
+The environment is a supplied, credited asset, not an Astra-generated city.
+
+## Original starter notes (historical)
+
+The following section documents the starting point, not the current feature set.
 
 A hackathon starter for a browser-based multiplayer racing game: Three.js on
 the client, Node.js + Express + Socket.IO on the server, deployable to
