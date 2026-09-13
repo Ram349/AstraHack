@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marina Bay Racer</title>
+  <meta name="description" content="Drive a Singapore street-circuit lap with Aunty Mei on the pit radio." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23091422'/%3E%3Cpath fill='%23f7485b' d='M5 6h5v20H5z'/%3E%3Cpath fill='white' d='M10 6h7v7h-7zm7 7h7v7h-7zm7-7h5v7h-5z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/race-ui.css" />
+  <script type="importmap">{"imports":{"three":"/vendor/three/three.module.js"}}</script>
+</head>
+<body data-race-phase="loading">
+  <div id="hud">W / ↑ Accelerate · S / ↓ Brake · A D Steer<br><span>SHIFT Boost · SPACE Brake · R Restart grid</span></div>
+  <div id="location"><small>SINGAPORE · STREET CIRCUIT</small><span id="location-name">Marina Bay</span></div>
+  <div id="lap-timer"><small>ON THE GRID — CROSS THE LINE</small><span id="lap-time">0:00.000</span></div>
+  <div id="audio-controls">
+    <button id="voice-toggle" type="button" aria-pressed="false">Talk to Aunty</button>
+    <button id="mic-mode" type="button" hidden>Mic: auto · V to talk</button>
+  </div>
+  <div id="online-controls"><span id="online-status" role="status">Connecting to the circuit…</span><button id="copy-race-link" type="button">Copy race link</button><a id="race-signin" href="/signin-with-chatgpt" target="_top" hidden>Sign in to race together</a></div>
+  <div id="race-dashboard" aria-label="Live speed, gear, revs and boost">
+    <div class="rpm-track"><i id="rpm-bar"></i></div>
+    <div class="speed-row"><div class="gear"><small>GEAR</small><b id="gear-value">1</b></div><strong id="speed-value">000</strong><small>KM/H</small></div>
+    <div class="meter-label"><span>THROTTLE</span><span id="boost-label">SHIFT · BOOST</span></div>
+    <div class="meters"><div><i id="throttle-bar"></i></div><div><i id="boost-bar"></i></div></div>
+    <label class="steering-setting" for="steering-sensitivity">Steering <span id="steering-label">Balanced</span></label>
+    <input id="steering-sensitivity" type="range" min="75" max="135" step="5" value="100" aria-label="Steering sensitivity" />
+  </div>
+  <aside id="aunty-companion" aria-label="Aunty Mei's commentary">
+    <div id="commentary" role="status" aria-live="polite" aria-atomic="true">
+      <small id="aunty-status">AUNTY MEI · PIT WALL</small>
+      <span id="commentary-line">Your pit crew and Singapore tour guide, all in one aunty. Ready, lah?</span>
+    </div>
+    <div id="aunty-pet" data-expression="idle" role="img" aria-label="Aunty Mei: idle"></div>
+    <small id="voice-disclosure">AI Aunty · live voice when connected</small>
+  </aside>
+  <div id="speed-vignette" aria-hidden="true"></div>
+  <div id="race-intro">
+    <small>MARINA BAY RACER</small><h1 id="intro-title">LOADING MARINA BAY</h1>
+    <p>A city. A circuit. Your lap.</p>
+    <button id="skip-intro" type="button" hidden>Skip flyover →</button>
+  </div>
+  <div id="countdown" role="status" aria-live="assertive" hidden>
+    <div id="start-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+    <strong id="countdown-number">3</strong><small>GET READY · W TO ACCELERATE</small>
+  </div>
+  <script src="/hosting-config.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

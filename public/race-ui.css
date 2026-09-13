@@ -1,0 +1,86 @@
+:root { color-scheme: dark; font-family: system-ui, sans-serif; color: #f5f8ff; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #13232c; }
+canvas { display: block; }
+[hidden] { display: none !important; }
+button { color: inherit; font: 700 12px system-ui; border: 1px solid #ffffff40; background: #07141cde; border-radius: 20px; padding: 9px 13px; cursor: pointer; }
+button:hover { background: #16313b; border-color: #9bfff1; }
+button:focus-visible { outline: 2px solid #a7ffee; outline-offset: 3px; }
+button:disabled { opacity: .6; cursor: progress; }
+#hud { position: fixed; top: 18px; left: 20px; z-index: 2; font: 600 11px/1.7 system-ui; text-shadow: 0 2px 4px #000; }
+#hud span { color: #c7d8dd; font-size: 10px; }
+#location { position: fixed; left: 20px; top: 76px; z-index: 2; padding: 8px 12px; background: #07141cbf; border-left: 2px solid #9bfff1; }
+#location small { display: block; color: #99d8d0; font-size: 8px; letter-spacing: .17em; }
+#location-name { font-size: 14px; font-weight: 750; }
+#lap-timer { position: fixed; left: 20px; top: 136px; z-index: 2; min-width: 182px; padding: 10px 13px; background: #07141cdf; border: 1px solid #ffffff25; border-left: 3px solid #f7485b; border-radius: 5px; font: 800 23px/1.1 ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+#lap-timer small { display: block; color: #adc1cc; font: 700 8px/1.4 system-ui; letter-spacing: .12em; margin-bottom: 5px; }
+#lap-timer.complete { border-left-color: #9bfff1; color: #9bfff1; }
+#audio-controls { position: fixed; right: 18px; top: 18px; z-index: 6; display: flex; gap: 7px; }
+#voice-toggle[aria-pressed='true'] { border-color: #9bfff1; color: #b9fff3; }
+#online-controls { position: fixed; top: 66px; right: 18px; z-index: 6; display: flex; align-items: flex-end; flex-direction: column; gap: 6px; max-width: min(300px,45vw); text-align: right; }
+#online-status { font-size: 14px; line-height: 1.35; text-shadow: 0 2px 5px #000; }
+#online-controls button, #race-signin { font-size: 14px; }
+#race-signin { color: #b9fff3; background: #091722e8; padding: 8px; border-radius: 8px; }
+#race-dashboard { position: fixed; z-index: 2; left: 20px; bottom: 24px; width: 238px; padding: 13px 16px; border-radius: 12px; background: linear-gradient(135deg,#091722ed,#152432db); border: 1px solid #ffffff35; box-shadow: 0 8px 28px #0006; }
+.rpm-track { height: 5px; background: #ffffff22; border-radius: 3px; overflow: hidden; }
+.rpm-track i { display: block; height: 100%; background: linear-gradient(90deg,#91ffe1 55%,#fcdd67 78%,#ff4964 96%); transform-origin: left; transform: scaleX(.12); }
+.speed-row { display: flex; align-items: center; gap: 9px; margin: 5px 0 8px; }
+.speed-row strong { font: 850 49px/.98 ui-monospace,monospace; letter-spacing: -.08em; font-variant-numeric: tabular-nums; }
+.speed-row > small { align-self: flex-end; font: 750 9px system-ui; color: #a9bac8; padding-bottom: 5px; }
+.gear { border-right: 1px solid #ffffff30; padding-right: 12px; text-align: center; }
+.gear small { display: block; font-size: 7px; color: #a9bac8; letter-spacing: .08em; }
+.gear b { color: #b2ffe7; font-size: 27px; line-height: 1.1; }
+.meter-label { display: flex; justify-content: space-between; color: #adbfce; font-size: 7px; letter-spacing: .12em; }
+.meters { display: flex; gap: 12px; margin-top: 6px; }
+.meters > div { width: 50%; height: 4px; border-radius: 3px; background: #ffffff20; overflow: hidden; }
+.meters i { display: block; height: 100%; background: #9bfff1; transform-origin: left; }
+#throttle-bar { transform: scaleX(0); }
+#boost-bar { background: #ffe08a; }
+.steering-setting { display: flex; justify-content: space-between; margin-top: 12px; font-size: 9px; color: #adbfce; }
+#steering-label { color: #b2ffe7; }
+#steering-sensitivity { width: 100%; height: 12px; margin: 5px 0 0; accent-color: #9bfff1; cursor: pointer; }
+#race-dashboard.boosting { border-color: #ffe08a; box-shadow: 0 0 24px #ffcc4330; }
+#aunty-companion { position: fixed; z-index: 4; right: 18px; bottom: 16px; display: flex; align-items: flex-end; width: min(485px,calc(100vw - 295px)); gap: 8px; pointer-events: none; padding-bottom: 16px; }
+#commentary { position: relative; flex: 1; min-width: 0; margin-bottom: 49px; border-radius: 19px 19px 3px 19px; padding: 14px 17px; background: #fffaf0f5; color: #26323a; box-shadow: 0 5px 24px #0005; text-align: left; }
+#commentary::after { content: ''; position: absolute; right: -15px; bottom: 0; border-style: solid; border-width: 17px 0 0 18px; border-color: transparent transparent transparent #fffaf0f5; }
+#commentary small { display: block; margin-bottom: 7px; color: #9a3744; font-size: 9px; letter-spacing: .09em; font-weight: 850; }
+#commentary-line { display: block; font: 600 13px/1.45 system-ui; max-height: 145px; overflow-y: auto; pointer-events: auto; scrollbar-width: thin; }
+#aunty-pet { flex: 0 0 120px; width: 120px; height: 120px; background: url('/assets/aunty-pit-wall-sprites.png') 0 0/200% 200% no-repeat; filter: drop-shadow(0 5px 8px #0007); transform-origin: center bottom; }
+#aunty-pet[data-expression='talking'] { background-position: 100% 0; }
+#aunty-pet[data-expression='cheering'] { background-position: 0 100%; }
+#aunty-pet[data-expression='concerned'] { background-position: 100% 100%; }
+#aunty-pet.talking { animation: aunty-talk .3s ease-in-out infinite alternate; }
+#aunty-pet.listening { filter: drop-shadow(0 0 9px #9bfff1); }
+#voice-disclosure { position: absolute; bottom: 0; right: 2px; color: #e3ebef; text-shadow: 0 1px 4px black; font-size: 8px; }
+@keyframes aunty-talk { to { transform: translateY(-3px) rotate(-2deg); } }
+#speed-vignette { pointer-events: none; position: fixed; inset: 0; z-index: 1; opacity: 0; box-shadow: inset 0 0 12vw #17212dbb; transition: opacity .15s; }
+#race-intro { position: fixed; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center; flex-direction: column; padding-bottom: 80px; pointer-events: none; background: linear-gradient(transparent 65%,#04131b70); text-shadow: 0 3px 16px #0008; }
+#race-intro > small { font-size: 12px; font-weight: 800; letter-spacing: .5em; color: #b7fff0; }
+#race-intro h1 { margin: 6px 0 0; font: 850 clamp(30px,6vw,76px)/1 system-ui; letter-spacing: .15em; }
+#race-intro p { color: #e3edf1; font-size: 13px; letter-spacing: .12em; margin: 10px 0 18px; }
+#skip-intro { pointer-events: auto; }
+#countdown { position: fixed; top: 25%; left: 50%; z-index: 5; transform: translateX(-50%); text-align: center; pointer-events: none; text-shadow: 0 3px 28px #000b; }
+#countdown strong { display: block; font: 950 clamp(70px,12vw,145px)/1 system-ui; font-style: italic; }
+#countdown small { font-size: 9px; font-weight: 800; letter-spacing: .15em; }
+#start-lights { display: flex; gap: 10px; justify-content: center; padding: 10px 15px; background: #071018e0; border-radius: 25px; margin-bottom: 12px; }
+#start-lights i { width: 17px; height: 17px; border-radius: 50%; background: #472126; }
+#start-lights i.lit { background: #ff3b52; box-shadow: 0 0 13px #ff243e; }
+#countdown[data-go='true'] { color: #9bffe0; }
+#countdown[data-go='true'] #start-lights i { background: #73ffd5; box-shadow: 0 0 12px #6affc7; }
+body[data-race-phase='loading'] #race-dashboard,
+body[data-race-phase='flyover'] #race-dashboard, body[data-race-phase='approach'] #race-dashboard { visibility: hidden; }
+@media (max-width: 760px) {
+  #hud { top: 58px; font-size: 9px; left: 12px; } #hud span { font-size: 8px; }
+  #location { top: 105px; left: 12px; } #lap-timer { top: 162px; left: 12px; font-size: 19px; min-width: 160px; }
+  #audio-controls { right: 12px; top: 12px; }
+  #race-dashboard { bottom: 18px; left: 12px; width: 174px; padding: 10px; }
+  .speed-row strong { font-size: 35px; } .speed-row { gap: 6px; } .gear { padding-right: 8px; }
+  #aunty-companion { width: min(370px,calc(100vw - 207px)); right: 10px; bottom: 15px; gap: 2px; }
+  #aunty-pet { flex-basis: 83px; width: 83px; height: 83px; }
+  #commentary { padding: 11px 12px; margin-bottom: 41px; } #commentary-line { font-size: 11px; max-height: 132px; }
+  #commentary small { font-size: 8px; } #voice-disclosure { font-size: 7px; }
+}
+@media (max-width: 480px) {
+  #aunty-companion { width: calc(100vw - 24px); bottom: 145px; } #commentary-line { max-height: 75px; }
+}
+@media (prefers-reduced-motion: reduce) { #aunty-pet.talking { animation: none; } }

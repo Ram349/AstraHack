@@ -1,0 +1,7 @@
+{
+  "name": "marina-bay-racer-preview",
+  "main": "dist/server/index.js",
+  "compatibility_date": "2026-09-01",
+  "assets": { "directory": "dist/client", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
+  "d1_databases": [{ "binding": "DB", "database_name": "marina-bay-racer-local", "database_id": "local-preview", "migrations_dir": "drizzle" }]
+}
